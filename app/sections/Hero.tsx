@@ -11,10 +11,11 @@ interface HeroProps {
 }
 
 const bgImages = [
-    "https://images.pexels.com/photos/1107717/pexels-photo-1107717.jpeg",
-    "https://images.pexels.com/photos/24964100/pexels-photo-24964100.jpeg",
-    "https://images.pexels.com/photos/462116/pexels-photo-462116.jpeg",
-    "https://images.pexels.com/photos/730444/pexels-photo-730444.jpeg",
+    "/weather1.jpeg",
+    "/weather2.jpeg",
+    "/weather3.jpeg",
+    "/weather3.jpeg",
+   
 ];
 
 const Hero: React.FC<HeroProps> = ({ onSearch, location, current, forecast = [] }) => {
@@ -30,7 +31,10 @@ const Hero: React.FC<HeroProps> = ({ onSearch, location, current, forecast = [] 
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
-        if (input.trim()) onSearch(input.trim());
+        if (input.trim()) {
+            onSearch(input.trim());
+            setInput(""); // ✅ Clear input field after search
+        }
     };
 
     return (
@@ -41,7 +45,7 @@ const Hero: React.FC<HeroProps> = ({ onSearch, location, current, forecast = [] 
             <div className="absolute inset-0 bg-black bg-opacity-40 z-10 transition-all duration-500" />
             <div className="w-full z-20 px-4 py-12 sm:py-20">
                 <h1 className="text-white text-3xl sm:text-6xl font-bold mb-12 sm:mb-16 w-full md:max-w-3xl mx-auto">
-                    Discover the Weather in  every city you go
+                    Discover the Weather in every city you go
                 </h1>
 
                 <form onSubmit={handleSearch} className="max-w-lg mx-auto relative">
